@@ -30,13 +30,13 @@ declare module angular.ui {
          * Function (injectable), returns the actual controller function or string.
          */
         controllerProvider?: Function;
-        
+
         /**
          * Specifies the parent state of this state
          */
         parent?: string | IState
-        
-        
+
+
         resolve?: {};
         /**
          * A url with optional parameters. When a state is navigated or transitioned to, the $stateParams service will be populated with any parameters that were passed.
@@ -158,16 +158,18 @@ declare module angular.ui {
         go(to: string, params?: {}, options?: IStateOptions): angular.IPromise<any>;
         transitionTo(state: string, params?: {}, updateLocation?: boolean): void;
         transitionTo(state: string, params?: {}, options?: IStateOptions): void;
-        includes(state: string, params?: {}): boolean;
-        is(state:string, params?: {}): boolean;
-        is(state: IState, params?: {}): boolean;
-        href(state: IState, params?: {}, options?: IHrefOptions): string;
-        href(state: string, params?: {}, options?: IHrefOptions): string;
+        includes(state: string, params?: {}, options?: IIncludesOptions): boolean;
+        is(state:string|IState, params?: {}, options?: IIncludesOptions): boolean;
+        href(state: string|IState, params?: {}, options?: IHrefOptions): string;
         get(state: string): IState;
         get(): IState[];
         current: IState;
         params: IStateParamsService;
         reload(): void;
+    }
+
+    interface IIncludesOptions {
+      relative?: string|IState;
     }
 
     interface IStateParamsService {
