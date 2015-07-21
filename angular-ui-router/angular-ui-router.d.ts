@@ -5,7 +5,7 @@
 
 /// <reference path="../angularjs/angular.d.ts" />
 
-declare module angular.ui {
+declare module ng.ui {
 
     interface IState {
         name?: string;
@@ -71,7 +71,7 @@ declare module angular.ui {
         reloadOnSearch?: boolean;
     }
 
-    interface IStateProvider extends angular.IServiceProvider {
+    interface IStateProvider extends ng.IServiceProvider {
         state(name:string, config:IState): IStateProvider;
         state(config:IState): IStateProvider;
         decorator(name?: string, decorator?: (state: IState, parent: Function) => any): any;
@@ -93,7 +93,7 @@ declare module angular.ui {
         strictMode(value: boolean): void;
     }
 
-    interface IUrlRouterProvider extends angular.IServiceProvider {
+    interface IUrlRouterProvider extends ng.IServiceProvider {
         when(whenPath: RegExp, handler: Function): IUrlRouterProvider;
         when(whenPath: RegExp, handler: any[]): IUrlRouterProvider;
         when(whenPath: RegExp, toPath: string): IUrlRouterProvider;
@@ -155,7 +155,7 @@ declare module angular.ui {
          *
          * @param options Options object.
          */
-        go(to: string, params?: {}, options?: IStateOptions): angular.IPromise<any>;
+        go(to: string, params?: {}, options?: IStateOptions): ng.IPromise<any>;
         transitionTo(state: string, params?: {}, updateLocation?: boolean): void;
         transitionTo(state: string, params?: {}, options?: IStateOptions): void;
         includes(state: string, params?: {}, options?: IIncludesOptions): boolean;
@@ -169,7 +169,7 @@ declare module angular.ui {
     }
 
     interface IIncludesOptions {
-      relative?: string|IState;
+        relative?: string|IState;
     }
 
     interface IStateParamsService {
@@ -177,16 +177,16 @@ declare module angular.ui {
     }
 
     interface IUrlRouterService {
-    	/*
-    	 * Triggers an update; the same update that happens when the address bar
-    	 * url changes, aka $locationChangeSuccess.
-    	 *
-    	 * This method is useful when you need to use preventDefault() on the
-    	 * $locationChangeSuccess event, perform some custom logic (route protection,
-    	 * auth, config, redirection, etc) and then finally proceed with the transition
-    	 * by calling $urlRouter.sync().
-    	 *
-    	 */
+        /*
+         * Triggers an update; the same update that happens when the address bar
+         * url changes, aka $locationChangeSuccess.
+         *
+         * This method is useful when you need to use preventDefault() on the
+         * $locationChangeSuccess event, perform some custom logic (route protection,
+         * auth, config, redirection, etc) and then finally proceed with the transition
+         * by calling $urlRouter.sync().
+         *
+         */
         sync(): void;
     }
 
