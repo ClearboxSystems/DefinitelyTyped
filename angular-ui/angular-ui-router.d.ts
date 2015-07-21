@@ -80,16 +80,18 @@ declare module ng.ui {
         go(to: string, params?: {}, options?: IStateOptions): IPromise<any>;
         transitionTo(state: string, params?: {}, updateLocation?: boolean): void;
         transitionTo(state: string, params?: {}, options?: IStateOptions): void;
-        includes(state: string, params?: {}): boolean;
-        is(state:string, params?: {}): boolean;
-        is(state: IState, params?: {}): boolean;
-        href(state: IState, params?: {}, options?: IHrefOptions): string;
-        href(state: string, params?: {}, options?: IHrefOptions): string;
+        includes(state: string, params?: {}, options?: IIncludesOptions): boolean;
+        is(state:string|IState, params?: {}, options?: IIncludesOptions): boolean;
+        href(state: string|IState, params?: {}, options?: IHrefOptions): string;
         get(state: string): IState;
         get(): IState[];
         current: IState;
         params: IStateParamsService;
         reload(): void;
+    }
+
+    interface IIncludesOptions {
+        relative: string|IState;
     }
 
     interface IStateParamsService {
