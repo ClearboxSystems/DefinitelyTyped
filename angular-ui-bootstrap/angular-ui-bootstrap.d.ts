@@ -178,24 +178,29 @@ declare module angular.ui.bootstrap {
 
     interface IModalServiceInstance {
         /**
-         * a method that can be used to close a modal, passing a result
+         * A method that can be used to close a modal, passing a result. If `preventDefault` is called on the `modal.closing` event then the modal will remain open.
          */
         close(result?: any): void;
 
         /**
-         * a method that can be used to dismiss a modal, passing a reason
+         * A method that can be used to dismiss a modal, passing a reason. If `preventDefault` is called on the `modal.closing` event then the modal will remain open.
          */
         dismiss(reason?: any): void;
 
         /**
-         * a promise that is resolved when a modal is closed and rejected when a modal is dismissed
+         * A promise that is resolved when a modal is closed and rejected when a modal is dismissed.
          */
         result: angular.IPromise<any>;
 
         /**
-         * a promise that is resolved when a modal gets opened after downloading content's template and resolving all variables
+         * A promise that is resolved when a modal gets opened after downloading content's template and resolving all variables.
          */
         opened: angular.IPromise<any>;
+
+        /**
+         * A promise that is resolved when a modal is rendered.
+         */
+        rendered: angular.IPromise<any>;
     }
 
     interface IModalScope extends angular.IScope {
