@@ -190,17 +190,17 @@ declare module angular.ui.bootstrap {
         /**
          * A promise that is resolved when a modal is closed and rejected when a modal is dismissed.
          */
-        result: angular.IPromise<any>;
+        result: ng.IPromise<any>;
 
         /**
          * A promise that is resolved when a modal gets opened after downloading content's template and resolving all variables.
          */
-        opened: angular.IPromise<any>;
+        opened: ng.IPromise<any>;
 
         /**
          * A promise that is resolved when a modal is rendered.
          */
-        rendered: angular.IPromise<any>;
+        rendered: ng.IPromise<any>;
     }
 
     interface IModalScope extends angular.IScope {
