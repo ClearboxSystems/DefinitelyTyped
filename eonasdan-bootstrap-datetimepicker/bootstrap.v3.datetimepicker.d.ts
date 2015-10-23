@@ -26,38 +26,171 @@ declare module BootstrapV3DatetimePicker {
         date?: string;
         up?: string;
         down?: string;
+        previous?: string;
+        next?: string;
+        today?: string;
+        clear?: string;
+        close?: string;
+    }
+
+    interface DatetimepickerTooltips {
+        today?: string;
+        clear?: string;
+        close?: string;
+        selectMonth?: string;
+        prevMonth?: string;
+        nextMonth?: string;
+        selectYear?: string;
+        prevYear?: string;
+        nextYear?: string;
+        selectDecade?: string;
+        prevDecade?: string;
+        nextDecade?: string;
+        prevCentury?: string;
+        nextCentury?: string;
+    }
+
+    interface DatetimepickerHPositioning {
+        horizontal: string;
+    }
+
+    interface DatetimepickerVPositioning {
+        vertical: string;
+    }
+
+    interface DatetimepickerBothPositioning {
+        horizontal: string;
+        vertical: string;
+    }
+
+    type DatetimepickerPositioning = DatetimepickerHPositioning|DatetimepickerVPositioning|DatetimepickerBothPositioning;
+
+    interface DatetimepickerKeybinds {
+        [key: string]: (widget: JQuery) => void;
     }
 
     interface DatetimepickerOptions {
-        pickDate?: boolean;
-        pickTime?: boolean;
-        useMinutes?: boolean;
-        useSeconds?: boolean;
-        useCurrent?: boolean;
-        minuteStepping?: number;
-        minDate?: any;
-        maxDate?: any;
-        showToday?: boolean;
+        format?: string;
+        dayViewHeaderFormat?: string;
+        extraFormats?: string[];
+        stepping?: number;
+        minDate?: Date|moment.Moment|string;
+        maxDate?: Date|moment.Moment|string;
+        useCurrent?: boolean|string;
         collapse?: boolean;
-        language?: string;
-        defaultDate?: string;
-        disabledDates?: Array<any>;
-        enabledDates?: Array<any>;
+        locale?: string|moment.MomentLanguage;
+        defaultDate?: Date|moment.Moment|string;
+        disabledDates?: Array<Date|moment.Moment|string>;
+        enabledDates?: Array<Date|moment.Moment|string>;
         icons?: DatetimepickerIcons;
         useStrict?: boolean;
-        direction?: string;
         sideBySide?: boolean;
-        daysOfWeekDisabled?: Array<any>;
+        daysOfWeekDisabled?: number[];
+        calendarWeeks?: boolean;
+        viewMode?: string;
+        toolbarPlacement?: string;
+        showTodayButton?: boolean;
+        showClear?: boolean;
+        showClose?: boolean;
+        widgetPositioning?: DatetimepickerPositioning;
+        widgetParent?: string|JQuery;
+        keepOpen?: boolean;
+        inline?: boolean;
+        keepInvalid?: boolean;
+        keyBinds?: DatetimepickerKeybinds;
+        debug?: boolean;
+        ignoreReadonly?: boolean;
+        disabledTimeIntervals?: Array<[moment.Moment, moment.Moment]>;
+        allowInputToggle?: boolean;
+        focusOnShow?: boolean;
+        enabledHours?: number[];
+        viewDate?: any;
+        tooltips?: DatetimepickerTooltips;
     }
 
     interface Datetimepicker {
-        setDate(date: any): void;
-        setMinDate(date: any): void;
-        setMaxDate(date: any): void;
+        destroy(): void;
+        toggle(): void;
         show(): void;
+        hide(): void;
         disable(): void;
         enable(): void;
-        getDate(): void;
+        date(): moment.Moment;
+        date(d: string|Date|moment.Moment): void;
+        disabledDates(): moment.Moment[];
+        disabledDates(d: Array<string|Date|moment.Moment>): void;
+        enabledDates(): moment.Moment[];
+        enabledDates(d: Array<string|Date|moment.Moment>): void;
+        defaultDate(): moment.Moment|boolean;
+        defaultDate(d: string|Date|moment.Moment|boolean): void;
+        useCurrent(): string|boolean;
+        useCurrent(useCurrent: boolean|string): void;
+        minDate(): moment.Moment|boolean;
+        minDate(d: string|Date|moment.Moment|boolean): void;
+        maxDate(): moment.Moment|boolean;
+        maxDate(d: string|Date|moment.Moment|boolean): void;
+        daysOfWeekDisabled(): number[];
+        daysOfWeekDisabled(days: number[]): void;
+        options(): DatetimepickerOptions;
+        options(options: DatetimepickerOptions): void;
+        format(): string;
+        format(fmt: string): void;
+        extraFormats(): boolean|string[];
+        extraFormats(formats: string[]): void;
+        locale(): string;
+        locale(newLocale: string): void;
+        stepping(): number;
+        stepping(step: number): void;
+        sideBySide(): boolean;
+        sideBySide(sideBySide: boolean): void;
+        collapse(): boolean;
+        collapse(collapse: boolean): void;
+        icons(): DatetimepickerIcons;
+        icons(icons: DatetimepickerIcons): void;
+        useStrict(): boolean;
+        useStrict(useStrict: boolean): void;
+        widgetPositioning(): DatetimepickerPositioning;
+        widgetPositioning(positioning: DatetimepickerPositioning): void;
+        viewMode(): string;
+        viewMode(mode: string): void;
+        calendarWeeks(): boolean;
+        calendarWeeks(weeks: boolean): void;
+        showClear(): boolean;
+        showClear(show: boolean): void;
+        showTodayButton(): boolean;
+        showTodayButton(show: boolean): void;
+        toolbarplacement(): string;
+        toolbarplacement(placement: string): void;
+        dayViewHeaderFormat(): string;
+        dayViewHeaderFormat(format: string): void;
+        keyBinds(): DatetimepickerKeybinds;
+        keyBinds(keybinds: DatetimepickerKeybinds): void;
+        clear(): void;
+        inline(): boolean;
+        inline(inline: boolean): void;
+        ignoreReadonly(): boolean;
+        ignoreReadonly(ignore: boolean): boolean;
+        showClose(): boolean;
+        showClose(show: boolean): void;
+        debug(): void;
+        keepInvalid(): boolean;
+        keepInvalid(keepInvalid: boolean): void;
+        allowInputToggle(): boolean;
+        allowInputToggle(allowInputToggle: boolean): void;
+        focusOnShow(): boolean;
+        focusOnShow(focusOnShow: boolean): void;
+        disabledTimeIntervals(): Array<[moment.Moment, moment.Moment]>;
+        disabledTimeIntervals(intervals: Array<[moment.Moment, moment.Moment]>): void;
+        enabledHours(): number[];
+        enabledHours(hours: number[]): void;
+        disabledHours(): number[];
+        disabledHours(hours: number[]): void;
+        viewDate(): moment.Moment;
+        viewDate(date: string|Date|moment.Moment): void;
+        parseInputDate(): (input: string) => moment.Moment;
+        parseInputDate(parseFunction: (input: string) => moment.Moment): void;
+        tooltips(): DatetimepickerTooltips;
+        tooltips(tooltips: DatetimepickerTooltips): void;
     }
 
 }
